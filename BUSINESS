@@ -1,0 +1,19 @@
+
+-- Fonction utilitaire non exportée
+emptyListMessage :: String
+emptyListMessage = "Erreur : la liste des ventes ne doit pas être vide !"
+
+-- Fonction principale de calcul (non exportée)
+sumNonEmpty :: [Int] -> Int
+sumNonEmpty xs
+  | null xs   = error emptyListMessage
+  | otherwise = sum xs
+
+-- Point d'entrée du programme
+main :: IO ()
+main = do
+    putStrLn "=== Calcul du total des ventes journalières ==="
+    let ventesDuJour = [2000, 3500, 1200]
+    putStrLn $ "Ventes du jour : " ++ show ventesDuJour
+    let total = sumNonEmpty ventesDuJour
+    putStrLn $ "Total des ventes : " ++ show total
